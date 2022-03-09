@@ -122,7 +122,7 @@ class SigninScreen extends StatelessWidget {
                    onTap: () {},
                    child: RichText(
                           text: const TextSpan(
-                            text:"Please",
+                            text:"already have an account?",
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight:FontWeight.bold,
