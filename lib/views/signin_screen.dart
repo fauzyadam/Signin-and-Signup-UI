@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:signup_app/views/signup_screen.dart';
 
@@ -12,7 +10,7 @@ class SigninScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.blue,
-  body: Stack(
+      body: Stack(
     children: [
       Positioned(
         top: 10,
@@ -35,14 +33,15 @@ class SigninScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   color:Colors.white
                   ),
-            child: Column(
+                  
+              child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 40,
+               children: [
+                const SizedBox(
+                  height: 200,
                 ),
                 Center(
-                  child: RichText(
+                   child: RichText(
                     text: const TextSpan(
                       text:"Please",
                       style: TextStyle(
@@ -52,7 +51,7 @@ class SigninScreen extends StatelessWidget {
                       ),
                       children: [
                         TextSpan(
-                      text:"  Login",
+                      text:"  Signin",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight:FontWeight.bold,
@@ -67,62 +66,120 @@ class SigninScreen extends StatelessWidget {
                 ),
             const SizedBox(
               
-              height:90,
+              height:50,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60),
               child: Column(
                 children:  [
-                  buildTextField(
-                    Icons.person,
-                    "User Name", false ,false,
-                    ),
-                    const SizedBox(
+                  const TextField(
+    obscureText: false,
+
+            decoration:  InputDecoration(
+              prefixIcon:  Icon(
+            (Icons.person)
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(35))
+              ),
+              focusedBorder:OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(35))
+              ),
+                contentPadding: EdgeInsets.all(10),
+              hintText: "Enter User Name",
+              hintStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            
+            ),
+
+          ),
+                  const SizedBox(
                       height: 10,
                     ),
-                  buildTextField(
-                    Icons.email_outlined,
-                    "Email", false ,true,
-                    ),
+       
                    const  SizedBox(
                       height: 10,
                     ),
-                    buildTextField(
-                    Icons.lock_clock_outlined,
-                    "Password", true ,false,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    buildTextField(
-                    Icons.lock_clock_outlined,
-                    "Confirm Password", true ,false,
-                    ),
-                   const SizedBox(
-                      height: 10,
-                    ),
-                ],
+                   const  TextField(
+      obscureText: true,
+     
+              decoration:  InputDecoration(
+                prefixIcon:  Icon(
+              (Icons.lock_clock_outlined)
+                ),
+                enabledBorder:  OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(35))
+                ),
+                focusedBorder:  OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(35))
+                ),
+                  contentPadding:  EdgeInsets.all(10),
+                hintText: "Enter Password",
+                hintStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              
               ),
+
             ),
-             SizedBox(
-               height: 20,
-             ),
-            Center(
-              child: ElevatedButton(onPressed: (){}, 
-              child: Text("Register",
-              style: TextStyle(fontSize:20, fontWeight: FontWeight.bold,
-              ),),
-            ),
-            ),
-            
-             Center(
-               child: Padding(
-                 padding: const EdgeInsets.symmetric(vertical: 30),
+                const  SizedBox(
+                      height: 30,
+                    ),
+                Container(
+                  width: 150,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  alignment: Alignment.bottomCenter,
+                  decoration:const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(15),),
+                    boxShadow: <BoxShadow> [ 
+                      BoxShadow(color: Colors.grey,),
+                   
+                    ],
+                  color: Colors.blue,
+                  
+                    ),
+                 child: const Text(
+                   "Login",
+                   style: TextStyle(
+                     fontSize:20,
+                     fontWeight: FontWeight.bold,
+                     color: Colors.white,
+                   ),
+                   ),
+                    ),
+                      const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                "Forgot Password?",
+                style:  TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.black38
+              ),
+              ),
+              
+               Padding(
+                 padding: const EdgeInsets.only(bottom:0,left: 20,),
                  child: InkWell(
-                   onTap: () {},
-                   child: RichText(
+             onTap: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (BuildContext context) => const SignupScreen()));
+                   },
+             child: Container(
+                        margin:const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.fromLTRB(20, 5, 10, 5),
+                        decoration: BoxDecoration(
+                        
+                          borderRadius: BorderRadius.circular(20),
+                        ),  
+                      
+                        child:  Padding(
+                          padding:  const EdgeInsets.only(left: 70, top: 10, right: 10),
+                             child: RichText(
                           text: const TextSpan(
-                            text:"already have an account?",
+                            text:"New User?",
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight:FontWeight.bold,
@@ -130,7 +187,7 @@ class SigninScreen extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                            text:"  Login",
+                            text:"  Register",
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight:FontWeight.bold,
@@ -142,16 +199,19 @@ class SigninScreen extends StatelessWidget {
                             ],
                         )
                         ),
-                 ),
+                  
+
+
+                        ),
+                      ),
+           ),
                ),
-             ),
-
-
+                ],
+              ),
+            ),
             ]
             ),
-       
-            
-  ),
+       ),
         ),
       ),
       
@@ -164,32 +224,5 @@ class SigninScreen extends StatelessWidget {
     ),
     
     );
-  }
-
-  TextField buildTextField(
-    IconData icon, String hintText, bool isPassword, bool isEmail) {
-    return TextField(
-      obscureText: isPassword,
-      keyboardType: isEmail ? TextInputType.emailAddress: TextInputType.text,
-              decoration:  InputDecoration(
-                prefixIcon:  Icon(
-              (icon)
-                ),
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                  borderRadius: BorderRadius.all(Radius.circular(35))
-                ),
-                focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                  borderRadius: BorderRadius.all(Radius.circular(35))
-                ),
-                  contentPadding: const EdgeInsets.all(10),
-                hintText: hintText,
-                hintStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              
-              ),
-
-            );
-     
   }
 }
